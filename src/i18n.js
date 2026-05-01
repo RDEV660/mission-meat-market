@@ -42,14 +42,14 @@ const MESSAGES = {
     es: 'Valle del Río Grande · Carne seca artesanal',
   },
   'hero.title': {
-    en: 'Twelve flavors. One unforgettable bite.',
-    es: 'Doce sabores. Una mordida inolvidable.',
+    en: 'Eleven flavors. One unforgettable bite.',
+    es: 'Once sabores. Una mordida inolvidable.',
   },
   'hero.lead': {
     en:
-      '100% beef, handcrafted in small batches — from classic original and lemon pepper to bold Hot Flamas, Pickle con Chile, Azul, and Zombie. Stop by, sample, and find your favorite.',
+      '100% beef, handcrafted in small batches — from the classic Sasón Original and bright Tajín to bold Hot Flamas, Chile Habanero, Pickle con Chile, Azul, and Zombie. Stop by, sample, and find your favorite.',
     es:
-      '100% res, hecho artesanal en lotes pequeños — desde el clásico Sasón Original y Lemon Pepper hasta los atrevidos Hot Flamas, Pickle con Chile, Azul y Zombie. Pasa, prueba y elige tu favorito.',
+      '100% res, hecho artesanal en lotes pequeños — desde el clásico Sasón Original y el brillante Tajín hasta los atrevidos Hot Flamas, Chile Habanero, Pickle con Chile, Azul y Zombie. Pasa, prueba y elige tu favorito.',
   },
   'hero.call': {
     en: 'Call us',
@@ -68,7 +68,7 @@ const MESSAGES = {
   'hero.next': { en: 'Next flavor', es: 'Sabor siguiente' },
   'hero.scroll': { en: 'See flavors', es: 'Ver sabores' },
 
-  'flavors.heading': { en: 'Twelve flavors of carne seca', es: 'Doce sabores de carne seca' },
+  'flavors.heading': { en: 'Eleven flavors of carne seca', es: 'Once sabores de carne seca' },
   'flavors.intro': {
     en: 'Click any flavor to preview it. The cards rotate automatically every few seconds.',
     es: 'Toca cualquier sabor para verlo. Las tarjetas avanzan automáticamente cada pocos segundos.',
@@ -151,9 +151,9 @@ const MESSAGES = {
   'specialties.carneTitle': { en: 'Carne seca', es: 'Carne seca' },
   'specialties.carneBody': {
     en:
-      '<strong>100% beef, handcrafted</strong> — the snack customers drive in for. Our cases are stacked with flavors like original, lemon pepper, Tajín, chile de árbol, habanero, Hot Flamas, pickle con chile, and eye-catching varieties such as Azul and Zombie. Stop by for a sample and find your favorite.',
+      '<strong>100% beef, handcrafted</strong> — the snack customers drive in for. Our cases are stacked with flavors like Sasón Original, Tajín, chile de árbol, habanero, Hot Flamas, pickle con chile, and eye-catching varieties such as Azul and Zombie. Stop by for a sample and find your favorite.',
     es:
-      '<strong>100% res, hecho artesanal</strong> — el antojo por el que nos visitan. Nuestras vitrinas lucen sabores como original, lemon pepper, Tajín, chile de árbol, habanero, Hot Flamas, pickle con chile, y creaciones llamativas como Azul y Zombie. Pasa por una muestra y elige tu favorito.',
+      '<strong>100% res, hecho artesanal</strong> — el antojo por el que nos visitan. Nuestras vitrinas lucen sabores como Sasón Original, Tajín, chile de árbol, habanero, Hot Flamas, pickle con chile, y creaciones llamativas como Azul y Zombie. Pasa por una muestra y elige tu favorito.',
   },
   'specialties.fajitaTitle': {
     en: 'Marinated fajita meat',

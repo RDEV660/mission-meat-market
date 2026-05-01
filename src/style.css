@@ -301,17 +301,104 @@ img {
 /* ===== Hero ===== */
 .hero {
   position: relative;
-  min-height: min(95vh, 56rem);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
   isolation: isolate;
-  background: var(--color-black);
+  color: var(--color-white);
+  padding: clamp(3rem, 6vw, 5rem) 1.25rem clamp(3.5rem, 6vw, 5rem);
+  background: #15110d;
 }
 
 .hero:focus {
   outline: none;
+}
+
+/* Brand-tied warm gradient backdrop. No image bleed, no muddy overlays. */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(60rem 35rem at 18% 22%, rgba(165, 48, 33, 0.32), transparent 65%),
+    radial-gradient(45rem 28rem at 88% 80%, rgba(217, 130, 43, 0.22), transparent 60%),
+    linear-gradient(135deg, #1a1410 0%, #2a1a14 40%, #1a1410 100%);
+  pointer-events: none;
+}
+
+.hero__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 22px 22px;
+  opacity: 0.5;
+  mix-blend-mode: screen;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 76rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.hero__content {
+  text-align: left;
+  max-width: 36rem;
+}
+
+@media (max-width: 860px) {
+  .hero__content {
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+/* Photo card */
+.hero__media {
+  position: relative;
+  width: 100%;
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 861px) {
+  .hero__media {
+    margin: 0 0 0 auto;
+  }
+}
+
+.hero__media-frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #0d0a08;
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.55),
+    0 4px 16px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.hero__media-frame::after {
+  /* subtle inner vignette so the corners feel deeper */
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 75% 75% at 50% 50%, transparent 55%, rgba(0, 0, 0, 0.45) 100%);
+  pointer-events: none;
+  z-index: 2;
 }
 
 .hero__slides {
@@ -327,103 +414,96 @@ img {
 }
 
 .hero__slide {
+  position: relative;
   flex: 0 0 100%;
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: center;
-  animation: heroKenBurns 18s ease-in-out infinite alternate;
-  animation-play-state: paused;
+  background-color: #0d0a08;
+  overflow: hidden;
 }
 
-.hero__slide.is-active {
-  animation-play-state: running;
-}
-
-@keyframes heroKenBurns {
-  from {
-    transform: scale(1.06) translate3d(-1.5%, 0.5%, 0);
-  }
-  to {
-    transform: scale(1.12) translate3d(1.5%, -1%, 0);
-  }
-}
-
-.hero__overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(17, 17, 17, 0.18) 0%,
-      rgba(17, 17, 17, 0.05) 35%,
-      rgba(17, 17, 17, 0.55) 100%
-    ),
-    radial-gradient(ellipse 60% 55% at 18% 90%, rgba(17, 17, 17, 0.55), transparent 75%),
-    radial-gradient(ellipse 60% 55% at 85% 10%, rgba(165, 48, 33, 0.18), transparent 75%);
-  pointer-events: none;
-}
-
-.hero__content {
-  position: relative;
-  z-index: 3;
-  max-width: 44rem;
-  padding: 5rem 1.5rem 6rem;
-  margin: 0 auto;
-  text-align: center;
-  color: var(--color-white);
-}
-
-.hero__content::before {
+/* Blurred fill behind the focal photo, contained within the card. */
+.hero__slide::before {
   content: '';
   position: absolute;
-  inset: -1.5rem -2rem -2.5rem;
-  background: radial-gradient(ellipse 80% 70% at 50% 60%, rgba(17, 17, 17, 0.55), transparent 75%);
-  z-index: -1;
-  filter: blur(2px);
-  pointer-events: none;
+  inset: 0;
+  background-image: var(--slide-img);
+  background-size: cover;
+  background-position: center;
+  filter: blur(28px) brightness(0.55) saturate(1.1);
+  transform: scale(1.2);
+  z-index: 0;
+}
+
+/* Sharp focal photo, contain-sized so it never crops or upscales. */
+.hero__slide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--slide-img);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+  transform: scale(1);
+  transition: transform 6s var(--ease-out);
+}
+
+.hero__slide.is-active::after {
+  transform: scale(1.04);
 }
 
 .hero__eyebrow {
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: rgba(255, 255, 255, 0.92);
-  margin: 0 0 1rem;
+  letter-spacing: 0.22em;
+  color: var(--color-orange-soft);
+  margin: 0 0 1.1rem;
   display: inline-block;
-  padding: 0.4rem 0.9rem;
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  padding: 0.4rem 0.95rem;
+  border: 1px solid rgba(246, 207, 153, 0.35);
   border-radius: 999px;
-  background: rgba(17, 17, 17, 0.25);
-  backdrop-filter: blur(6px);
+  background: rgba(165, 48, 33, 0.22);
+  backdrop-filter: blur(4px);
 }
 
 .hero__title {
   font-family: var(--font-display);
-  font-size: clamp(2.1rem, 5.4vw, 3.6rem);
+  font-size: clamp(2.2rem, 5.4vw, 3.7rem);
   font-weight: 800;
-  line-height: 1.06;
-  margin: 0 0 1rem;
-  letter-spacing: -0.02em;
-  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.65), 0 2px 6px rgba(0, 0, 0, 0.5);
+  line-height: 1.04;
+  margin: 0 0 1.1rem;
+  letter-spacing: -0.022em;
+  color: var(--color-white);
 }
 
 .hero__lead {
-  margin: 0 auto 1.75rem;
-  max-width: 36rem;
-  font-size: 1.1rem;
+  margin: 0 0 1.85rem;
+  max-width: 32rem;
+  font-size: 1.08rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.95);
-  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55), 0 1px 3px rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.86);
+}
+
+@media (max-width: 860px) {
+  .hero__lead {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  justify-content: center;
+  justify-content: flex-start;
+}
+
+@media (max-width: 860px) {
+  .hero__actions {
+    justify-content: center;
+  }
 }
 
 /* Buttons */
@@ -486,17 +566,17 @@ img {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* Hero controls */
+/* Hero controls — anchored to the photo card */
 .hero__nav {
   position: absolute;
   top: 50%;
   z-index: 4;
   transform: translateY(-50%);
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.45);
-  background: rgba(17, 17, 17, 0.4);
+  background: rgba(17, 17, 17, 0.55);
   color: var(--color-white);
   display: inline-flex;
   align-items: center;
@@ -504,59 +584,72 @@ img {
   cursor: pointer;
   transition: background var(--dur-fast), transform var(--dur-fast);
   backdrop-filter: blur(6px);
+  opacity: 0;
+}
+
+.hero__media:hover .hero__nav,
+.hero__media:focus-within .hero__nav {
+  opacity: 1;
 }
 
 .hero__nav:hover {
-  background: rgba(165, 48, 33, 0.85);
+  background: rgba(165, 48, 33, 0.9);
   transform: translateY(-50%) scale(1.08);
 }
 
 .hero__nav:focus-visible {
   outline: 3px solid var(--color-orange);
   outline-offset: 3px;
+  opacity: 1;
 }
 
 .hero__nav--prev {
-  left: 1rem;
+  left: 0.75rem;
 }
 
 .hero__nav--next {
-  right: 1rem;
+  right: 0.75rem;
+}
+
+@media (hover: none) {
+  /* Always show controls on touch devices */
+  .hero__nav {
+    opacity: 1;
+  }
 }
 
 .hero__dots {
-  position: absolute;
-  bottom: 2.2rem;
-  left: 0;
-  right: 0;
+  position: relative;
   z-index: 4;
+  margin-top: 1.1rem;
   display: flex;
   justify-content: center;
   gap: 0.45rem;
   flex-wrap: wrap;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
 }
 
 .hero__dot {
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.6);
-  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.18);
   padding: 0;
   cursor: pointer;
-  transition: background var(--dur-fast), transform var(--dur-fast), width var(--dur-fast);
+  transition: background var(--dur-fast), transform var(--dur-fast), width var(--dur-fast),
+    border-color var(--dur-fast);
 }
 
 .hero__dot:hover,
 .hero__dot:focus-visible {
-  background: rgba(255, 255, 255, 0.45);
-  transform: scale(1.2);
+  background: rgba(255, 255, 255, 0.55);
+  transform: scale(1.15);
 }
 
 .hero__dot.is-active {
-  background: var(--color-white);
-  border-color: var(--color-white);
+  background: var(--color-orange);
+  border-color: var(--color-orange);
   width: 28px;
   border-radius: 999px;
 }
@@ -568,7 +661,7 @@ img {
   right: 0;
   z-index: 4;
   height: 3px;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .hero__progress-bar {
@@ -692,8 +785,22 @@ img {
   position: relative;
   flex: 1 1 auto;
   min-height: 22rem;
-  background: var(--color-paper);
+  background: var(--color-ink);
   overflow: hidden;
+}
+
+/* Same blurred-backdrop trick used in the hero — keeps the stage feeling full
+   while the actual photo stays sharp and uncropped. */
+.flavors__image-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--bg-img);
+  background-size: cover;
+  background-position: center;
+  filter: blur(34px) brightness(0.55) saturate(1.05);
+  transform: scale(1.16);
+  z-index: 0;
 }
 
 .flavors__image {
@@ -701,10 +808,12 @@ img {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  padding: 1.5rem;
+  z-index: 1;
   opacity: 0;
-  transform: scale(1.04);
-  transition: opacity 0.45s var(--ease-emph), transform 0.7s var(--ease-emph);
+  transform: scale(0.985);
+  transition: opacity 0.5s var(--ease-emph), transform 0.7s var(--ease-emph);
 }
 
 .flavors__image.is-visible {
@@ -871,7 +980,7 @@ img {
   inset: 0;
   background-size: cover;
   background-position: center;
-  transform: scale(1.05);
+  transform: scale(1);
   transition: transform 0.8s var(--ease-emph);
 }
 
@@ -883,7 +992,7 @@ img {
 }
 
 .card--feature:hover .card__media {
-  transform: scale(1.12);
+  transform: scale(1.06);
 }
 
 .card--feature .card__body {
@@ -1275,6 +1384,7 @@ img {
 
   .reveal,
   .hero__slide,
+  .hero__slide::after,
   .flavors__image,
   .card,
   .quote,

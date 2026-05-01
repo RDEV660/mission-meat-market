@@ -181,7 +181,7 @@ function initHeroCarousel() {
   allUrls.forEach((url) => {
     const div = document.createElement('div')
     div.className = 'hero__slide'
-    div.style.backgroundImage = `url("${url}")`
+    div.style.setProperty('--slide-img', `url("${url}")`)
     div.setAttribute('role', 'img')
     div.setAttribute('aria-hidden', 'true')
     container.appendChild(div)
@@ -425,12 +425,14 @@ function initFlavors() {
     setCaption()
   }
 
+  const stage = img.closest('.flavors__image-wrap')
   function swapImage(src, id) {
     img.classList.remove('is-visible')
     img.alt = ''
     requestAnimationFrame(() => {
       img.src = src
       img.alt = t(getCurrentLang(), `flavors.${id}.name`)
+      if (stage) stage.style.setProperty('--bg-img', `url("${src}")`)
       img.addEventListener(
         'load',
         () => img.classList.add('is-visible'),
