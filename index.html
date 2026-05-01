@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Mission Meat Market — carne seca, marinated fajita meat, Mexican chips and local products. Friendly service in the RGV."
+    />
+    <title>Mission Meat Market</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main" data-i18n="skip.link">Skip to content</a>
+
+    <header class="site-header" id="top">
+      <div class="site-header__inner">
+        <a class="brand" href="#top">
+          <img
+            class="brand__logo"
+            src="/logo.png"
+            alt="Mission Meat Market"
+            width="200"
+            height="200"
+          />
+        </a>
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+          <ul class="site-nav__list">
+            <li><a href="#flavors" data-i18n="nav.flavors">Flavors</a></li>
+            <li><a href="#specialties" data-i18n="nav.specialties">Specialties</a></li>
+            <li><a href="#about" data-i18n="nav.about">About</a></li>
+            <li><a href="#reviews" data-i18n="nav.reviews">Reviews</a></li>
+            <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button
+            type="button"
+            class="lang-switch__btn"
+            data-set-lang="en"
+            aria-pressed="true"
+            lang="en"
+            title="English"
+          >
+            EN
+          </button>
+          <button
+            type="button"
+            class="lang-switch__btn"
+            data-set-lang="es"
+            aria-pressed="false"
+            lang="es"
+            title="Español"
+          >
+            ES
+          </button>
+        </div>
+        <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="visually-hidden" data-i18n="nav.menu">Menu</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-label="Featured flavors" tabindex="-1">
+        <div class="hero__slides" id="hero-slides"></div>
+        <div class="hero__overlay" aria-hidden="true"></div>
+
+        <div class="hero__content">
+          <p class="hero__eyebrow reveal" data-stagger="0" data-i18n="hero.eyebrow">
+            Rio Grande Valley
+          </p>
+          <h1 class="hero__title reveal" data-stagger="1" data-i18n="hero.title">
+            Twelve flavors. One unforgettable bite.
+          </h1>
+          <p class="hero__lead reveal" data-stagger="2" data-i18n="hero.lead">
+            100% beef, handcrafted in small batches.
+          </p>
+          <div class="hero__actions reveal" data-stagger="3">
+            <a class="btn btn--primary" id="hero-call" href="tel:">Call us</a>
+            <a
+              class="btn btn--ghost"
+              id="hero-whatsapp"
+              href="#"
+              rel="noopener noreferrer"
+              target="_blank"
+              data-i18n="hero.whatsapp"
+              >WhatsApp</a
+            >
+            <a class="btn btn--ghost btn--ghost-light" href="#flavors" data-i18n="hero.scroll"
+              >See flavors</a
+            >
+          </div>
+        </div>
+
+        <button
+          type="button"
+          class="hero__nav hero__nav--prev"
+          id="hero-prev"
+          aria-label="Previous flavor"
+          data-i18n-aria="hero.prev"
+        >
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+            <path d="M15.5 4.5 8 12l7.5 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <button
+          type="button"
+          class="hero__nav hero__nav--next"
+          id="hero-next"
+          aria-label="Next flavor"
+          data-i18n-aria="hero.next"
+        >
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+            <path d="M8.5 4.5 16 12l-7.5 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+
+        <div class="hero__dots" id="hero-dots" role="tablist" aria-label="Hero slides"></div>
+        <div class="hero__progress" id="hero-progress" aria-hidden="true">
+          <span class="hero__progress-bar"></span>
+        </div>
+      </section>
+
+      <section class="section section--flavors" id="flavors">
+        <div class="section__inner">
+          <header class="section__head reveal" data-stagger="0">
+            <p class="section__eyebrow" data-i18n="flavors.tagsLabel">Flavors</p>
+            <h2 data-i18n="flavors.heading">Twelve flavors of carne seca</h2>
+            <p data-i18n="flavors.intro">Click any flavor to preview it.</p>
+          </header>
+
+          <div class="flavors">
+            <div class="flavors__stage reveal" data-stagger="1">
+              <div class="flavors__image-wrap">
+                <img
+                  class="flavors__image"
+                  id="flavor-image"
+                  src=""
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="flavors__caption">
+                <p class="flavors__name" id="flavor-name"></p>
+                <p class="flavors__desc" id="flavor-desc"></p>
+              </div>
+            </div>
+            <ul class="flavors__chips reveal" data-stagger="2" id="flavor-chips" role="tablist"></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--specialties" id="specialties">
+        <div class="section__inner">
+          <header class="section__head reveal" data-stagger="0">
+            <h2 data-i18n="specialties.heading">Our specialties</h2>
+            <p data-i18n="specialties.intro">
+              What keeps customers coming back from San Antonio and across the Valley.
+            </p>
+          </header>
+          <div class="cards">
+            <article class="card card--feature reveal" data-stagger="1">
+              <div
+                class="card__media"
+                style="background-image: url('/flavors/jerky-variety-hero.png')"
+                aria-hidden="true"
+              ></div>
+              <div class="card__body">
+                <div class="card__icon" aria-hidden="true">🥩</div>
+                <h3 data-i18n="specialties.carneTitle">Carne seca</h3>
+                <p data-i18n-html="specialties.carneBody">
+                  100% beef, handcrafted.
+                </p>
+              </div>
+            </article>
+            <article class="card reveal" data-stagger="2">
+              <div class="card__icon" aria-hidden="true">🌮</div>
+              <h3 data-i18n="specialties.fajitaTitle">Marinated fajita meat</h3>
+              <p data-i18n="specialties.fajitaBody">
+                Tender cuts with great marinade flavor.
+              </p>
+            </article>
+            <article class="card reveal" data-stagger="3">
+              <div class="card__icon" aria-hidden="true">🛒</div>
+              <h3 data-i18n="specialties.chipsTitle">Mexican chips &amp; local goods</h3>
+              <p data-i18n="specialties.chipsBody">
+                Chips, snacks, and regional products alongside our meats.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--about" id="about">
+        <div class="section__inner section__inner--split reveal">
+          <div>
+            <p class="badge badge--rust" data-i18n="flavors.tagsLabel">Flavors</p>
+            <h2 data-i18n="about.heading">Why Mission Meat Market</h2>
+            <p data-i18n-html="about.p1">
+              We focus on quality, service, and cleanliness.
+            </p>
+            <p data-i18n="about.p2">
+              Our team is friendly and attentive.
+            </p>
+          </div>
+          <ul class="about-highlights">
+            <li>
+              <span class="check" aria-hidden="true">✓</span>
+              <span data-i18n="about.b1">Known for homemade jerky &amp; fajitas</span>
+            </li>
+            <li>
+              <span class="check" aria-hidden="true">✓</span>
+              <span data-i18n="about.b2">Wide variety of flavors &amp; products</span>
+            </li>
+            <li>
+              <span class="check" aria-hidden="true">✓</span>
+              <span data-i18n="about.b3">Custom orders when you ask</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section section--shop" id="shop" aria-labelledby="shop-heading">
+        <div class="section__inner">
+          <header class="section__head section__head--center reveal" data-stagger="0">
+            <h2 id="shop-heading" data-i18n="shop.heading">From our shop</h2>
+            <p data-i18n="shop.intro">A peek inside the counter.</p>
+          </header>
+        </div>
+        <div class="shop-marquee" id="shop-marquee">
+          <div class="shop-marquee__track" id="shop-track"></div>
+        </div>
+      </section>
+
+      <section class="section section--reviews" id="reviews">
+        <div class="section__inner">
+          <header class="section__head reveal" data-stagger="0">
+            <h2 data-i18n="reviews.heading">What customers say</h2>
+            <p data-i18n="reviews.intro">
+              Short excerpts from public reviews — thank you for the kind words.
+            </p>
+          </header>
+          <div class="testimonials">
+            <figure class="quote reveal" data-stagger="1">
+              <blockquote data-i18n="reviews.q1">
+                “The carne seca is incredible — amazing texture and flavor.”
+              </blockquote>
+              <figcaption data-i18n="reviews.q1cap">Joshua · recent review</figcaption>
+            </figure>
+            <figure class="quote reveal" data-stagger="2">
+              <blockquote data-i18n="reviews.q2">
+                “I always stop for carne seca — best I’ve had here or in Mexico.”
+              </blockquote>
+              <figcaption data-i18n="reviews.q2cap">Ricardo · Local Guide</figcaption>
+            </figure>
+            <figure class="quote reveal" data-stagger="3">
+              <blockquote data-i18n="reviews.q3">
+                “Great variety — they even have Mexican chips and local products.”
+              </blockquote>
+              <figcaption data-i18n="reviews.q3cap">John · Local Guide</figcaption>
+            </figure>
+            <figure class="quote reveal" data-stagger="4">
+              <blockquote data-i18n="reviews.q4">
+                “Best fajita meat in the valley.”
+              </blockquote>
+              <figcaption data-i18n="reviews.q4cap">J. Jones · Local Guide</figcaption>
+            </figure>
+            <figure class="quote reveal" data-stagger="5">
+              <blockquote data-i18n="reviews.q5">
+                “The marinaded fajita is super soft and great.”
+              </blockquote>
+              <figcaption data-i18n="reviews.q5cap">Albert · Local Guide</figcaption>
+            </figure>
+            <figure class="quote reveal" data-stagger="6">
+              <blockquote data-i18n="reviews.q6">
+                “Best place in the valley for homemade beef jerky.”
+              </blockquote>
+              <figcaption data-i18n="reviews.q6cap">Jesus · Local Guide</figcaption>
+            </figure>
+            <figure class="quote reveal" data-stagger="7">
+              <blockquote data-i18n="reviews.q7">
+                “Great meats — they made a custom order when I asked.”
+              </blockquote>
+              <figcaption data-i18n="reviews.q7cap">Enrique · Local Guide</figcaption>
+            </figure>
+            <figure class="quote reveal" data-stagger="8">
+              <blockquote data-i18n="reviews.q8">
+                “OMG the best ever carne seca.”
+              </blockquote>
+              <figcaption data-i18n="reviews.q8cap">Robin</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--contact" id="contact">
+        <div class="section__inner contact">
+          <div class="contact__info reveal">
+            <h2 data-i18n="contact.heading">Visit &amp; connect</h2>
+            <p class="contact__meta" id="contact-address"></p>
+            <p class="contact__meta" id="contact-hours"></p>
+            <div class="contact__actions">
+            <a class="btn btn--primary contact__phone" id="footer-call" href="tel:">
+              <span class="btn__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"
+                  />
+                </svg>
+              </span>
+              <span id="footer-phone-text">Call</span>
+            </a>
+            <a
+              class="btn btn--ghost contact__wa"
+              id="footer-whatsapp"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="btn__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                  />
+                </svg>
+              </span>
+              <span data-i18n="contact.whatsapp">WhatsApp</span>
+            </a>
+          </div>
+            <ul class="socials" id="social-links" aria-label="Social media"></ul>
+          </div>
+
+          <div class="contact__map reveal" data-stagger="1">
+            <iframe
+              id="contact-map"
+              title="Mission Meat Market on Google Maps"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src=""
+              allowfullscreen
+            ></iframe>
+            <a
+              class="contact__map-link"
+              id="contact-map-link"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="contact.openMaps"
+              >Open in Google Maps</a
+            >
+          </div>
+
+          <div class="copy-toast" id="copy-toast" role="status" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p class="site-footer__copy">
+          © <span id="year"></span>
+          Mission Meat Market.
+          <span data-i18n="footer.rights">All rights reserved.</span>
+        </p>
+        <a class="site-footer__top" href="#top" data-i18n="footer.top">Back to top ↑</a>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
