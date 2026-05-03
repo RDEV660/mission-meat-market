@@ -1052,20 +1052,43 @@ img {
   margin-top: 0.05rem;
 }
 
-/* ===== Shop marquee ===== */
-.section--shop {
-  background: var(--color-ink);
+/* ===== Flavor lineup marquee ===== */
+.section--lineup {
+  position: relative;
+  background: #15110d;
   color: var(--color-white);
   padding-bottom: 5rem;
   overflow: hidden;
+  isolation: isolate;
 }
 
-.section--shop h2 {
+.section--lineup::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(50rem 30rem at 80% 18%, rgba(217, 130, 43, 0.18), transparent 65%),
+    radial-gradient(45rem 28rem at 12% 82%, rgba(165, 48, 33, 0.22), transparent 65%);
+  pointer-events: none;
+}
+
+.section--lineup .section__inner,
+.section--lineup .shop-marquee {
+  position: relative;
+  z-index: 1;
+}
+
+.section--lineup .section__eyebrow {
+  color: var(--color-orange-soft);
+}
+
+.section--lineup h2 {
   color: var(--color-white);
 }
 
-.section--shop .section__head p {
-  color: rgba(255, 255, 255, 0.75);
+.section--lineup .section__head p {
+  color: rgba(255, 255, 255, 0.78);
 }
 
 .shop-marquee {
@@ -1091,13 +1114,17 @@ img {
 
 .shop-card {
   position: relative;
-  width: clamp(15rem, 28vw, 22rem);
+  width: clamp(13rem, 22vw, 18rem);
   aspect-ratio: 4 / 5;
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: var(--shadow-md);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
   transition: transform var(--dur-base) var(--ease-emph);
   flex: 0 0 auto;
+  margin: 0;
+  background: #0d0a08;
 }
 
 .shop-card img {
@@ -1113,6 +1140,43 @@ img {
 
 .shop-card:hover img {
   transform: scale(1.06);
+}
+
+/* Flavor-name caption that floats over each lineup card */
+.lineup-card .lineup-card__name {
+  position: absolute;
+  left: 0.85rem;
+  right: 0.85rem;
+  bottom: 0.85rem;
+  z-index: 2;
+  margin: 0;
+  padding: 0.55rem 0.85rem;
+  background: rgba(17, 17, 17, 0.6);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  color: var(--color-white);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  transition: background var(--dur-fast), transform var(--dur-fast) var(--ease-emph);
+}
+
+.lineup-card:hover .lineup-card__name {
+  background: rgba(165, 48, 33, 0.85);
+  transform: translateY(-2px);
+}
+
+.lineup-card::after {
+  /* gentle bottom gradient so caption is readable on light photos too */
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 @keyframes marquee {

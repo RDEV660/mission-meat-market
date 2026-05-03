@@ -42,14 +42,14 @@ const MESSAGES = {
     es: 'Valle del Río Grande · Carne seca artesanal',
   },
   'hero.title': {
-    en: 'Eleven flavors. One unforgettable bite.',
-    es: 'Once sabores. Una mordida inolvidable.',
+    en: 'Twelve flavors. One unforgettable bite.',
+    es: 'Doce sabores. Una mordida inolvidable.',
   },
   'hero.lead': {
     en:
-      '100% beef, handcrafted in small batches — from the classic Sasón Original and bright Tajín to bold Hot Flamas, Chile Habanero, Pickle con Chile, Azul, and Zombie. Stop by, sample, and find your favorite.',
+      '100% beef, handcrafted in small batches — from the classic Sasón Original and Lemon Pepper to bold Hot Flamas, Chile Habanero, Pickle con Chile, Azul, and Zombie. Stop by, sample, and find your favorite.',
     es:
-      '100% res, hecho artesanal en lotes pequeños — desde el clásico Sasón Original y el brillante Tajín hasta los atrevidos Hot Flamas, Chile Habanero, Pickle con Chile, Azul y Zombie. Pasa, prueba y elige tu favorito.',
+      '100% res, hecho artesanal en lotes pequeños — desde el clásico Sasón Original y Lemon Pepper hasta los atrevidos Hot Flamas, Chile Habanero, Pickle con Chile, Azul y Zombie. Pasa, prueba y elige tu favorito.',
   },
   'hero.call': {
     en: 'Call us',
@@ -68,7 +68,7 @@ const MESSAGES = {
   'hero.next': { en: 'Next flavor', es: 'Sabor siguiente' },
   'hero.scroll': { en: 'See flavors', es: 'Ver sabores' },
 
-  'flavors.heading': { en: 'Eleven flavors of carne seca', es: 'Once sabores de carne seca' },
+  'flavors.heading': { en: 'Twelve flavors of carne seca', es: 'Doce sabores de carne seca' },
   'flavors.intro': {
     en: 'Click any flavor to preview it. The cards rotate automatically every few seconds.',
     es: 'Toca cualquier sabor para verlo. Las tarjetas avanzan automáticamente cada pocos segundos.',
@@ -137,10 +137,11 @@ const MESSAGES = {
     es: 'Nuestra versión michelada de la casa — sabrosa, cítrica y con buen picor.',
   },
 
-  'shop.heading': { en: 'From our shop', es: 'Desde la tienda' },
-  'shop.intro': {
-    en: 'A peek inside the counter — see what’s on display today.',
-    es: 'Un vistazo al mostrador — mira lo que tenemos hoy.',
+  'lineup.eyebrow': { en: 'Flavor wall', es: 'Pared de sabores' },
+  'lineup.heading': { en: 'Find your favorite', es: 'Encuentra tu favorito' },
+  'lineup.intro': {
+    en: 'Twelve handcrafted flavors gliding by — pick the one that catches your eye.',
+    es: 'Doce sabores artesanales pasando — elige el que te llame la atención.',
   },
 
   'specialties.heading': { en: 'Our specialties', es: 'Nuestras especialidades' },

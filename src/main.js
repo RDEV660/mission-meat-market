@@ -475,29 +475,46 @@ function initFlavors() {
 }
 
 /* ============================================================
- *  Shop marquee
+ *  Flavor lineup marquee — animated strip of every flavor close-up
  * ============================================================ */
-function initShopMarquee() {
-  const track = document.getElementById('shop-track')
+function initLineupMarquee() {
+  const track = document.getElementById('lineup-track')
   if (!track) return
-  const photos = config.shopPhotos
-  if (!photos?.length) return
+  const flavors = config.flavorImages
+  if (!flavors?.length) return
 
-  const build = (src, i) => {
-    const card = document.createElement('div')
-    card.className = 'shop-card'
+  const build = (flavor) => {
+    const card = document.createElement('figure')
+    card.className = 'shop-card lineup-card'
+
     const img = document.createElement('img')
-    img.src = src
+    img.src = flavor.src
     img.alt = ''
     img.loading = 'lazy'
     img.decoding = 'async'
     img.setAttribute('aria-hidden', 'true')
     card.appendChild(img)
+
+    const cap = document.createElement('figcaption')
+    cap.className = 'lineup-card__name'
+    cap.textContent = t(getCurrentLang(), `flavors.${flavor.id}.name`)
+    cap.dataset.flavorId = flavor.id
+    card.appendChild(cap)
+
     return card
   }
 
   // duplicate the list once for seamless loop
-  ;[...photos, ...photos].forEach((src, i) => track.appendChild(build(src, i)))
+  ;[...flavors, ...flavors].forEach((flavor) => track.appendChild(build(flavor)))
+
+  // Re-translate captions when the language changes
+  document.addEventListener('mmm:langchange', () => {
+    const lang = getCurrentLang()
+    track.querySelectorAll('.lineup-card__name').forEach((el) => {
+      const id = el.dataset.flavorId
+      if (id) el.textContent = t(lang, `flavors.${id}.name`)
+    })
+  })
 }
 
 /* ============================================================
@@ -562,7 +579,7 @@ function initReveal() {
 /* ============================================================ */
 initContactHydration()
 initContactMap()
-initShopMarquee()
+initLineupMarquee()
 initFlavors()
 initHeroCarousel()
 initI18n(config, refreshDynamicContent)

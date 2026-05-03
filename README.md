@@ -13,7 +13,7 @@ Static marketing site for **Mission Meat Market** — Rio Grande Valley carne se
 - **EN / ES toggle** — full UI translation, persisted in `localStorage` and pre-detected from `navigator.language`.
 - **Click-to-call & WhatsApp** — `tel:` and `wa.me/` links, both wired from a single config file.
 - **Google Maps embed** — no API key required (uses `maps.google.com/maps?q=...&output=embed`).
-- **Shop marquee** — auto-scrolling band of in-store photos, pauses on hover.
+- **Flavor lineup marquee** — auto-scrolling band of all 12 flavor close-ups with name pills, pauses on hover.
 - **Animated reveals** — `IntersectionObserver`-based fade/slide-in with staggered delays, all gated behind `prefers-reduced-motion`.
 - **Accessible** — skip link, focus-visible outlines, keyboard nav for hero, ARIA roles/labels on tabs/dots, reduced-motion fallbacks.
 
@@ -75,7 +75,7 @@ export const config = {
   },
   flavorImages: [ /* 12 entries */ ],
   heroImageUrls: [ /* 12 entries — defaults to flavor close-ups */ ],
-  shopPhotos:    [ /* 4 in-store photos */ ],
+  varietyHero: '/flavors/jerky-variety-hero.webp',
   logoPath: '/logo.png',
 }
 ```
@@ -104,7 +104,7 @@ Requires Node 20+.
 3. Vercel auto-detects Vite; `vercel.json` already pins:
    - Build command: `npm run build`
    - Output directory: `dist`
-   - 1-year cache for `/flavors/*.png` and `/hero/*.png`
+   - 1-year cache for `/flavors/*.{webp,png,jpg,jpeg}`
 4. Click **Deploy**. No environment variables required.
 
 ---
